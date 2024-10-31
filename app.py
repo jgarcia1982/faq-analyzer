@@ -1,13 +1,13 @@
 import streamlit as st
 import openai
 
-# Configuración de la API de OpenAI
+# Configurar la API Key usando los secretos de Streamlit
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
-# Función para analizar el archivo y encontrar preguntas recurrentes
+# Función para analizar el archivo y encontrar preguntas frecuentes
 def analizar_preguntas_frecuentes(contenido):
     respuesta = openai.ChatCompletion.create(
-        model="gpt-4",
+        model="gpt-3.5-turbo",  # O usa "gpt-4" si tienes acceso a ese modelo
         messages=[
             {"role": "system", "content": "Eres un asistente que identifica preguntas frecuentes en chats de soporte técnico."},
             {"role": "user", "content": f"Analiza el siguiente contenido y extrae solo las preguntas frecuentes:\n\n{contenido}"}
