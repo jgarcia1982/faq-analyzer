@@ -35,7 +35,8 @@ for i in range(cantidad_archivos):
         contenido = archivo_subido.read().decode("utf-8")
         
         # Analizar el archivo para encontrar preguntas frecuentes
-        preguntas_frecuentes = analizar_preguntas_frecuentes(contenido)
+        with st.spinner(f"Analizando archivo #{i+1}..."):
+            preguntas_frecuentes = analizar_preguntas_frecuentes(contenido)
         
         # Procesar las preguntas para eliminar duplicados
         for pregunta in preguntas_frecuentes.split("\n"):
